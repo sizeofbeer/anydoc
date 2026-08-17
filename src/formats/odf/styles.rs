@@ -13,7 +13,7 @@ use crate::shared::list::MarkerKind;
 use std::cell::RefCell;
 use std::collections::{HashMap, HashSet};
 
-pub const LIST_LEVELS: usize = 10;
+pub(crate) const LIST_LEVELS: usize = 10;
 
 #[derive(Debug, Clone)]
 pub struct ListLevel {

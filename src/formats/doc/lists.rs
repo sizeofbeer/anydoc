@@ -11,7 +11,7 @@ use crate::shared::list::MarkerKind;
 use crate::shared::numbering::{NumberPattern, NumberText};
 use std::collections::HashMap;
 
-pub const LEVELS: usize = 9;
+pub(crate) const LEVELS: usize = 9;
 
 #[derive(Debug, Clone)]
 pub struct LevelDef {

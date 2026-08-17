@@ -8,6 +8,7 @@
 
 pub mod model;
 
+mod capi;
 mod error;
 mod formats;
 mod package;

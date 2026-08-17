@@ -17,6 +17,11 @@ keywords = ["markdown", "docx", "pdf", "converter", "document"]
 categories = ["parser-implementations", "text-processing"]
 include = ["/src", "/examples/convert.rs", "/README.md", "/LICENSE"]
 
+# Produce a cdylib in addition to the rlib so the C ABI shim (src/capi.rs)
+# can be loaded by native consumers (dlopen / LoadLibrary).
+[lib]
+crate-type = ["rlib", "cdylib"]
+
 [dev-dependencies]
 insta = "1"
 sha2 = "0.11"

@@ -7,7 +7,7 @@ use crate::package::xml::{Element, ns};
 use crate::shared::delta::StyleDelta;
 use crate::shared::list::MarkerKind;
 
-pub const LEVELS: usize = 9;
+pub(crate) const LEVELS: usize = 9;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub enum Bullet {

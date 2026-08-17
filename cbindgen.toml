@@ -1,0 +1,26 @@
+# cbindgen configuration for the anydoc C ABI shim (src/capi.rs).
+# Generates include/anydoc.h via:
+#   cbindgen --config cbindgen.toml --crate anydoc --output include/anydoc.h
+
+language = "C"
+
+include_guard = "ANYDOC_CAPI_H"
+
+# `usize` crosses the boundary as a byte length; express it as `size_t`.
+usize_is_size_t = true
+
+[parse]
+parse_deps = false
+
+[parse.expand]
+crates = ["anydoc"]
+
+# Emit only the C ABI surface, nothing else from the crate.
+[export]
+include = ["AnyDocErrorCode", "AnyDocFormat"]
+item_types = ["enums", "functions"]
+
+# Prefix enum variants with the enum name to avoid polluting the global
+# namespace (e.g. `AnyDocErrorCode_Ok` instead of a bare `Ok`).
+[enum]
+prefix_with_name = true

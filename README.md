@@ -1,5 +1,12 @@
 # anydoc
 
+> **本 fork（[@sizeofbeer](https://github.com/sizeofbeer)）新增工作**
+> 在 Firecrawl 官方 `anydoc` 基础上，额外增加了面向原生集成的 **C ABI 封装层**，便于 C/C++/Objective-C 项目（如 Quick Look 预览插件）直接调用，无需经过 Node/Python/WASM 运行时：
+> - `src/capi.rs` — `extern "C"` 导出层：`anydoc_to_markdown` / `anydoc_to_markdown_bytes`、按字节/路径/扩展名识别格式、错误码与 `anydoc_string_free` 调用方无关的内存释放。
+> - `cbindgen.toml` + `include/anydoc.h` — 自动生成的 C 头文件，枚举带 `AnyDoc` 前缀避免命名污染，`len` 为 `size_t`。
+> - `Cargo.toml` — 新增 `cdylib` crate-type，产出 `libanydoc`（`.dylib`/`.so`/`.dll`）。
+> - 配套文档：`方案_c_abi_anydoc.md`（方案）、`进度.md`（推进记录）、`评估报告.md`（转换正确性与性能验证，xlsx/pptx/docx 毫秒级、pdf 亚秒级）。
+
 [![Crates.io](https://img.shields.io/crates/v/anydoc.svg)](https://crates.io/crates/anydoc)
 [![npm](https://img.shields.io/npm/v/@firecrawl/anydoc.svg)](https://www.npmjs.com/package/@firecrawl/anydoc)
 [![PyPI](https://img.shields.io/pypi/v/firecrawl-anydoc.svg)](https://pypi.org/project/firecrawl-anydoc/)
